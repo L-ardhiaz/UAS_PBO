@@ -448,6 +448,11 @@ public class MiniKasir extends javax.swing.JFrame {
     private void jumlahbarang1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jumlahbarang1CaretUpdate
     try{
          int total =  Integer.parseInt(jumlahbarang1.getText() )  ; 
+         if(total<-1){
+             msgBox("Jumlah barang tidak boleh kurang dari 0");
+         }else{
+             
+         
                int hargabrg1 =Integer.parseInt(hargabarang1.getText().replace(".", ""));
                int disc1=(total*hargabrg1)*1/100;
                int hargabarang=0;
@@ -464,7 +469,7 @@ public class MiniKasir extends javax.swing.JFrame {
                }else{
                    totalbarang1.setText(""+hargabarang);
                }
-               
+               }
     }catch(Exception e){
         
     }    
