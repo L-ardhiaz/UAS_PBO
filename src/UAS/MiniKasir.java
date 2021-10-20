@@ -389,6 +389,20 @@ public class MiniKasir extends javax.swing.JFrame {
 
     private void btn_uangakhirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uangakhirActionPerformed
         // TODO add your handling code here:
+        try{
+            int getbayar = Integer.parseInt(bayar.getText());
+            int sthdisc = Integer.parseInt(setelahdiskon5.getText());
+            int hasil=0;
+            hasil = getbayar-sthdisc;
+            if(hasil>0){
+            uangakhir.setText(""+hasil);    
+            }else{
+                uangakhir.setText("0");
+            }
+            
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_btn_uangakhirActionPerformed
 
     private void btn_hapus_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapus_allActionPerformed
@@ -425,6 +439,7 @@ public class MiniKasir extends javax.swing.JFrame {
            }else{
                diskon5.setText("0");
            }
+           setelahdiskon5.setText(""+(totalall-afterdisc));
        }catch(Exception e){
            
        }
