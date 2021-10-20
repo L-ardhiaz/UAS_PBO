@@ -5,6 +5,9 @@
  */
 package UAS;
 
+import java.awt.Component;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author black
@@ -73,6 +76,7 @@ public class MiniKasir extends javax.swing.JFrame {
         totalbarang2.setEnabled(false);
 
         hargabarang3.setBackground(new java.awt.Color(204, 204, 255));
+        hargabarang3.setText("75.000");
         hargabarang3.setEnabled(false);
 
         diskonbarang3.setBackground(new java.awt.Color(204, 204, 255));
@@ -143,6 +147,7 @@ public class MiniKasir extends javax.swing.JFrame {
         diskon5.setEnabled(false);
 
         hargabarang1.setBackground(new java.awt.Color(204, 204, 255));
+        hargabarang1.setText("25.000");
         hargabarang1.setEnabled(false);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -154,8 +159,20 @@ public class MiniKasir extends javax.swing.JFrame {
         setelahdiskon5.setBackground(new java.awt.Color(204, 204, 255));
         setelahdiskon5.setEnabled(false);
 
+        jumlahbarang1.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jumlahbarang1CaretUpdate(evt);
+            }
+        });
+
         hargabarang2.setBackground(new java.awt.Color(204, 204, 255));
+        hargabarang2.setText("50.000");
         hargabarang2.setEnabled(false);
+        hargabarang2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hargabarang2ActionPerformed(evt);
+            }
+        });
 
         bayar.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
@@ -168,6 +185,11 @@ public class MiniKasir extends javax.swing.JFrame {
         barang2.setText("Barang 2");
 
         btn_total.setText("Total");
+        btn_total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_totalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -246,7 +268,9 @@ public class MiniKasir extends javax.swing.JFrame {
                                         .addComponent(diskon5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGap(51, 51, 51)
-                                        .addComponent(setelahdiskon5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(setelahdiskon5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btn_total, javax.swing.GroupLayout.Alignment.TRAILING)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,10 +285,6 @@ public class MiniKasir extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(uangakhir, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(btn_total)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,10 +301,10 @@ public class MiniKasir extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(barang1)
+                    .addComponent(diskonbarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(totalbarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(hargabarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(diskonbarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(totalbarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jumlahbarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,9 +341,9 @@ public class MiniKasir extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(setelahdiskon5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                .addGap(14, 14, 14)
                 .addComponent(btn_total)
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -367,6 +387,46 @@ public class MiniKasir extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_keluarActionPerformed
 
+    private void hargabarang2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargabarang2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hargabarang2ActionPerformed
+
+    private void btn_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_totalActionPerformed
+      msgBox("test Klick");
+    }//GEN-LAST:event_btn_totalActionPerformed
+
+    private void jumlahbarang1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jumlahbarang1CaretUpdate
+    try{
+         int total =  Integer.parseInt(jumlahbarang1.getText() )  ; 
+               int hargabrg1 =Integer.parseInt(hargabarang1.getText().replace(".", ""));
+               int disc1=(total*hargabrg1)*1/100;
+               int hargabarang=0;
+               if(total>50){
+                 diskonbarang1.setText(""+ disc1);  
+                  hargabarang = hargabrg1*total-disc1;
+               }else{
+                     diskonbarang1.setText("0"); 
+                      hargabarang = hargabrg1*total;
+               }
+                
+               if(hargabarang<-0){
+                   totalbarang1.setText("0");
+               }else{
+                   totalbarang1.setText(""+hargabarang);
+               }
+               
+    }catch(Exception e){
+
+    }
+          
+             
+  // TODO add your handling code here:
+    }//GEN-LAST:event_jumlahbarang1CaretUpdate
+
+   private void msgBox(String messages){
+       Component frame = null;
+       JOptionPane.showMessageDialog(frame,messages); 
+   }
     /**
      * @param args the command line arguments
      */
