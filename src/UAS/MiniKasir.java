@@ -170,6 +170,11 @@ public class MiniKasir extends javax.swing.JFrame {
                 jumlahbarang1CaretUpdate(evt);
             }
         });
+        jumlahbarang1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jumlahbarang1ActionPerformed(evt);
+            }
+        });
 
         hargabarang2.setBackground(new java.awt.Color(204, 204, 255));
         hargabarang2.setText("50.000");
@@ -395,7 +400,8 @@ public class MiniKasir extends javax.swing.JFrame {
             int hasil=0;
             hasil = getbayar-sthdisc;
             if(hasil>0){
-            uangakhir.setText(""+hasil);    
+            uangakhir.setText(""+hasil);  
+            msgBox("Uang Akhir = " +hasil);
             }else{
                 uangakhir.setText("0");
             }
@@ -447,9 +453,11 @@ public class MiniKasir extends javax.swing.JFrame {
 
     private void jumlahbarang1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jumlahbarang1CaretUpdate
     try{
-         int total =  Integer.parseInt(jumlahbarang1.getText() )  ; 
-         if(total<-1){
+         int total =  Integer.parseInt(jumlahbarang1.getText())  ; 
+         if(total < 0){
+        
              msgBox("Jumlah barang tidak boleh kurang dari 0");
+                  jumlahbarang1.setText("1");
          }else{
              
          
@@ -479,7 +487,12 @@ public class MiniKasir extends javax.swing.JFrame {
     private void jumlahbarang2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jumlahbarang2CaretUpdate
         // TODO add your handling code here:
         try{
-         int total =  Integer.parseInt(jumlahbarang2.getText() )  ; 
+             int total =  Integer.parseInt(jumlahbarang2.getText())  ; 
+         if(total < 0){
+           
+             msgBox("Jumlah barang tidak boleh kurang dari 0");
+               jumlahbarang2.setText("1");
+         }else{ 
                int hargabrg1 =Integer.parseInt(hargabarang2.getText().replace(".", ""));
                int disc1=(total*hargabrg1)*1/100;
                int hargabarang=0;
@@ -496,6 +509,7 @@ public class MiniKasir extends javax.swing.JFrame {
                }else{
                    totalbarang2.setText(""+hargabarang);
                }
+         }
                
     }catch(Exception e){
 
@@ -505,7 +519,12 @@ public class MiniKasir extends javax.swing.JFrame {
     private void jumlahbarang3CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jumlahbarang3CaretUpdate
         // TODO add your handling code here:
         try{
-         int total =  Integer.parseInt(jumlahbarang3.getText() )  ; 
+             int total =  Integer.parseInt(jumlahbarang3.getText())  ; 
+         if(total < 0){
+             msgBox("Jumlah barang tidak boleh kurang dari 0");
+             jumlahbarang3.setText("1");
+         }else{
+       
                int hargabrg1 =Integer.parseInt(hargabarang3.getText().replace(".", ""));
                int disc1=(total*hargabrg1)*1/100;
                int hargabarang=0;
@@ -523,11 +542,16 @@ public class MiniKasir extends javax.swing.JFrame {
                    
                    totalbarang3.setText(""+hargabarang);
                }
+         }
                
     }catch(Exception e){
 
     }
     }//GEN-LAST:event_jumlahbarang3CaretUpdate
+
+    private void jumlahbarang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlahbarang1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jumlahbarang1ActionPerformed
 
    private void msgBox(String messages){
        Component frame = null;
