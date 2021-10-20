@@ -406,7 +406,7 @@ public class MiniKasir extends javax.swing.JFrame {
     private void btn_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_totalActionPerformed
  
        try{
-            int total1=0,total2=0,total3=0,totalall=0;
+            int total1=0,total2=0,total3=0,totalall=0,afterdisc=0;
             if(barang1.isSelected()){
                 total1=Integer.parseInt(totalbarang1.getText());
             } 
@@ -419,7 +419,12 @@ public class MiniKasir extends javax.swing.JFrame {
             totalall= total1+total2+total3;
             totalpembayaran.setText(""+totalall);
 
-           
+           if(totalall > 1000000){
+               afterdisc = totalall*5/100;
+               diskon5.setText(""+afterdisc);
+           }else{
+               diskon5.setText("0");
+           }
        }catch(Exception e){
            
        }
