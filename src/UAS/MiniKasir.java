@@ -82,6 +82,12 @@ public class MiniKasir extends javax.swing.JFrame {
         diskonbarang3.setBackground(new java.awt.Color(204, 204, 255));
         diskonbarang3.setEnabled(false);
 
+        jumlahbarang3.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jumlahbarang3CaretUpdate(evt);
+            }
+        });
+
         barang3.setText("Barang 3");
 
         totalbarang3.setBackground(new java.awt.Color(204, 204, 255));
@@ -398,7 +404,25 @@ public class MiniKasir extends javax.swing.JFrame {
     }//GEN-LAST:event_hargabarang2ActionPerformed
 
     private void btn_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_totalActionPerformed
-      msgBox("test Klick");
+ 
+       try{
+            int total1=0,total2=0,total3=0,totalall=0;
+            if(barang1.isSelected()){
+                total1=Integer.parseInt(totalbarang1.getText());
+            } 
+            if(barang2.isSelected()){
+                total2=Integer.parseInt(totalbarang2.getText());
+            } 
+            if(barang3.isSelected()){
+                total3=Integer.parseInt(totalbarang3.getText());
+            } 
+            totalall= total1+total2+total3;
+            totalpembayaran.setText(""+totalall);
+
+           
+       }catch(Exception e){
+           
+       }
     }//GEN-LAST:event_btn_totalActionPerformed
 
     private void jumlahbarang1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jumlahbarang1CaretUpdate
@@ -422,7 +446,7 @@ public class MiniKasir extends javax.swing.JFrame {
                }
                
     }catch(Exception e){
-
+        
     }    
   // TODO add your handling code here:
     }//GEN-LAST:event_jumlahbarang1CaretUpdate
@@ -452,6 +476,33 @@ public class MiniKasir extends javax.swing.JFrame {
 
     }
     }//GEN-LAST:event_jumlahbarang2CaretUpdate
+
+    private void jumlahbarang3CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jumlahbarang3CaretUpdate
+        // TODO add your handling code here:
+        try{
+         int total =  Integer.parseInt(jumlahbarang3.getText() )  ; 
+               int hargabrg1 =Integer.parseInt(hargabarang3.getText().replace(".", ""));
+               int disc1=(total*hargabrg1)*1/100;
+               int hargabarang=0;
+               if(total>50){
+                 diskonbarang3.setText(""+ disc1);  
+                  hargabarang = hargabrg1*total-disc1;
+               }else{
+                     diskonbarang3.setText("0"); 
+                      hargabarang = hargabrg1*total;
+               }
+                
+               if(hargabarang<-0){
+                   totalbarang3.setText("0");
+               }else{
+                   
+                   totalbarang3.setText(""+hargabarang);
+               }
+               
+    }catch(Exception e){
+
+    }
+    }//GEN-LAST:event_jumlahbarang3CaretUpdate
 
    private void msgBox(String messages){
        Component frame = null;
