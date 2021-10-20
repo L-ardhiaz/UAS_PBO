@@ -182,6 +182,12 @@ public class MiniKasir extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Uang Akhir");
 
+        jumlahbarang2.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jumlahbarang2CaretUpdate(evt);
+            }
+        });
+
         barang2.setText("Barang 2");
 
         btn_total.setText("Total");
@@ -417,11 +423,35 @@ public class MiniKasir extends javax.swing.JFrame {
                
     }catch(Exception e){
 
-    }
-          
-             
+    }    
   // TODO add your handling code here:
     }//GEN-LAST:event_jumlahbarang1CaretUpdate
+
+    private void jumlahbarang2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jumlahbarang2CaretUpdate
+        // TODO add your handling code here:
+        try{
+         int total =  Integer.parseInt(jumlahbarang2.getText() )  ; 
+               int hargabrg1 =Integer.parseInt(hargabarang2.getText().replace(".", ""));
+               int disc1=(total*hargabrg1)*1/100;
+               int hargabarang=0;
+               if(total>50){
+                 diskonbarang2.setText(""+ disc1);  
+                  hargabarang = hargabrg1*total-disc1;
+               }else{
+                     diskonbarang2.setText("0"); 
+                      hargabarang = hargabrg1*total;
+               }
+                
+               if(hargabarang<-0){
+                   totalbarang2.setText("0");
+               }else{
+                   totalbarang2.setText(""+hargabarang);
+               }
+               
+    }catch(Exception e){
+
+    }
+    }//GEN-LAST:event_jumlahbarang2CaretUpdate
 
    private void msgBox(String messages){
        Component frame = null;
